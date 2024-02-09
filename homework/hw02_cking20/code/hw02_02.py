@@ -5,7 +5,7 @@ PROGRAM: HW01_01
 DESCRIPTION: asks user to enter a loan amount (in dollars), an APR (in percent), and a term (in years). Run a payment simulation over the term of the loan, tracking the
 remaining balance as on-time payments are made and interest is collected. 
 '''
-
+#Gets the mortgage payment
 def mortgage_payment(term, APR, loan_amount):
     #gets the term amount in months
     term_months = 12.0 * term;
@@ -19,7 +19,7 @@ def mortgage_payment(term, APR, loan_amount):
     
     return monthly_payment
 
-
+#Gets the mortgage residuals
 def mortgage_residual(term,APR,loan_amount):
     #calcs the total payment
 
@@ -87,14 +87,17 @@ def main():
             valid = False;
     #End of while loop
     mortgage_all = mortgage_residual(term, APR, loan_amount);
+    
     #Prints the totals with the calculated minimum payment
     print("MORTGAGE TERMS")
-    print("Loan amount: ................... " + str(APR) + " %");
-    print("Loan rate: ................... " + str(term) + " years");
-    print("Loan term: ................. $ " + str(loan_amount));
+    print("Loan amount: ................... $" + str(loan_amount));
+    print("Loan rate: ................... " + str(APR) + "%");
+    print("Loan term: ................. " + str(term) + " years");
     print("Monthly payment: ............. $ " + str(mortgage_all[0]));
     print("Final Payment: ............... $ " + str(mortgage_all[1]));
     print("Total paid ................. $ " + str(round(mortgage_all[2],2)));
     print("Cost of Credit ................. $ " + str(round(mortgage_all[3],2)));
+    
+#runs main
 if __name__ == "__main__":
     main()

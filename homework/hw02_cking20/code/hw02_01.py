@@ -2,15 +2,15 @@
 PROGRAMMER: .... Carson King
 USERNAME: ...... cking20
 PROGRAM: ....... hw02_01.py
-DESCRIPTION: Estimate average distance between random points in a
-rectanglar area.
+DESCRIPTION: Dissassemble the assembly code given in the hackman file and output it to the console and another file
+(for future problems).
 '''
 def disassemble_hack_code(filename):
-    # Open the file
+    #Open the file
     with open(filename + ".hack", "r") as file:
         lines = file.readlines()
 
-    # Dictionary for C-type instruction computation
+    #Dictionary for C-type instruction computation
     comp_dict = {
         "0101010": "0",
         "0111111": "1",
@@ -42,7 +42,7 @@ def disassemble_hack_code(filename):
         "1000110": "D|M"
     }
 
-    # Dictionary for jump instruction mapping
+    #Dictionary for jump instruction mapping
     jump_dict = {
         "000": "",
         "001": "JGT",
@@ -54,32 +54,32 @@ def disassemble_hack_code(filename):
         "111": "JMP"
     }
 
-    # List to store disassembled lines
+    #List to store disassembled lines
     disassembled_lines = []
 
-    # Iterate through lines and disassemble
+    #Iterate through lines and disassemble
     for line in lines:
         line = line.strip()  # Remove leading/trailing whitespace
         if line.startswith('0'):
-            # A-type instruction
+            #A-type instruction
             disassembled_lines.append(line + " @" + str(int(line[1:], 2)) + "\n")
         elif line.startswith('111'):
-            # C-type instruction
+            #C-type instruction
             comp = comp_dict.get(line[3:10], "ERROR")
             dest = ''.join('AMD'[int(bit)] for bit in line[10:13])
             jump = jump_dict.get(line[13:], "")
             disassembled_lines.append(line + " " + comp + "=" + dest + ";" + jump + "\n")
 
-    # Print the disassembled code
+    #Print the disassembled code
     for line in disassembled_lines:
         print(line, end="")
 
-    # Write the disassembled code to a file
+    #Write the disassembled code to a file
     with open(filename + ".dis", "w") as output_file:
         output_file.writelines(disassembled_lines)
 
 
-# Prompt user for the filename
+#Prompt user for the filename
 filename = input("Enter the name of a .hack file (without extension): ")
 # Call the function to disassemble the code
 disassemble_hack_code(filename)
