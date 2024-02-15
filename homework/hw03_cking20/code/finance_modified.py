@@ -9,7 +9,7 @@ DESCRIPTION: Mortgage Functions
 def mortgage_report(amount, rate, years):
     
     report = ""
-    for s in mortgage_amortization(amount, rate, years):
+    for s in mortgage_amortization(amount, rate, years,accelerated):
         report += s
     return report
 
@@ -29,11 +29,9 @@ def mortgage_amortization(amount,rate,term,accelerated):
     # Generate amortization table
     for month in range(1, term_months + 1):
         interest_payment = table_remaining_balance * monthly_rate
-        
-        if(accelerated == 1):
-            principal_payment = monthly_payment - interest_payment + 500;
-        else:
-            principal_payment = monthly_payment - interest_payment
+        principal_payment = monthly_payment - interest_payment + 500;
+        if (accelerated == 1):
+            principal_payment += 500
         table_interest_paid_total += interest_payment
         table_remaining_balance -= principal_payment
 
