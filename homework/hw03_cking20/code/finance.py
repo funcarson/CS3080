@@ -6,6 +6,7 @@ PROGRAM: finance.py
 DESCRIPTION: Mortgage Functions
 '''
 
+#left this as given
 def mortgage_report(amount, rate, years):
     
     report = ""

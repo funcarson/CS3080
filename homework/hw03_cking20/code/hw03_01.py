@@ -16,8 +16,8 @@ term_years  =   int(input("Enter loan term (yr):....... "))
 filename    =   str(input("Filename (w/o ext):......... "))
 print()
 
-# Generate full and abbreviated Amortization Schedules
-
+#Generate full and abbreviated Amortization Schedules
+#Made some changes to handle a tupple
 with open(filename + ".txt", "wt") as fp:
     title, summary, header, table = finance.mortgage_amortization(loan_amount, apr, term_years)
     fp.write(f"{title}\n{summary}\n")
