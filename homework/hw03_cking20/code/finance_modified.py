@@ -30,6 +30,8 @@ def mortgage_amortization(amount,rate,term,accelerated):
     for month in range(1, term_months + 1):
         interest_payment = table_remaining_balance * monthly_rate
         principal_payment = monthly_payment - interest_payment + 500;
+        
+        #If the person wants to accelerate their payment
         if (accelerated == 1):
             principal_payment += 500
         table_interest_paid_total += interest_payment
@@ -37,6 +39,8 @@ def mortgage_amortization(amount,rate,term,accelerated):
 
         # Append row to table
         table.append((month, format(interest_payment, '.2f'), format(principal_payment, '.2f'), format(table_remaining_balance, '.2f')))
+        if (remaining_balance < principal_payment) :
+            break;
 
     # Create title, summary, and header
     title = "Mortgage Amortization Schedule"
