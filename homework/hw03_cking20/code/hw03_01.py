@@ -1,6 +1,6 @@
 '''
-PROGRAMMER: William L. Bahn
-USERNAME: wbahn
+PROGRAMMER: Carson L. King
+USERNAME: cking20
 PROGRAM: hw03_01.py
 
 DESCRIPTION: Mortgage Amortization Table

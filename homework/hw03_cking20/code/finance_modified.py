@@ -39,8 +39,6 @@ def mortgage_amortization(amount,rate,term,accelerated):
 
         # Append row to table
         table.append((month, format(interest_payment, '.2f'), format(principal_payment, '.2f'), format(table_remaining_balance, '.2f')))
-        if (remaining_balance < principal_payment) :
-            break;
 
     # Create title, summary, and header
     title = "Mortgage Amortization Schedule"
